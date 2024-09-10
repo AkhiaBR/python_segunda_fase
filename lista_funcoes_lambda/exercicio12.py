@@ -1,6 +1,11 @@
 # Exercício 12
 # Nome: Fernando Gonçalves
 
+# Imagine que você está trabalhando em um sistema de e-commerce que aplica descontos
+# progressivos com base na quantidade de produtos comprados. Crie uma função que receba uma
+# lista de preços e um valor de desconto percentual. A função deve usar map() e lambda para
+# aplicar o desconto a cada item e retornar uma nova lista com os preços atualizados.
+
 produtos = {}
 contador = 0
 
