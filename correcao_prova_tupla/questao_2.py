@@ -15,14 +15,15 @@ def alterar():
     cod_funcionario = int(input("Qual o código do funcionário que deseja alterar?: "))
     op = str(input("O que você deseja alterar? Nome (N) ou cargo (C): ")).upper().strip()
     if(op=="N"):
+        nome_ant = str(input("Digite o nome do funcionário que deseja alterar: "))
         nome = str(input("Digite o novo nome do funcionário: "))
         for i in funcionarios[cod_funcionario]:
             if(i==nome):
                 print("ERRO: Valor já inserido. Tente novamente...")
-        # else:
-        #     funcionarios[cod_funcionario] = 
-            
-        
+        else:
+            index_nome_ant = funcionarios[cod_funcionario].index(nome_ant) # pega o index do nome que o usuário deseja alterar
+            funcionarios[cod_funcionario][index_nome_ant] = nome
+    if(op=="")
 # def excluir():
 def pesquisar():
     print(funcionarios)
