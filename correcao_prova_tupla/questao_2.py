@@ -1,6 +1,7 @@
 # questão 2
 
 funcionarios = {}
+total_funcionarios = 0
 
 def cadastrar():
     funcionario_lista = []
@@ -34,9 +35,22 @@ def alterar():
             index_cargo_ant = funcionarios[cod_funcionario].index(cargo_ant)
             funcionarios[cod_funcionario][index_cargo_ant] = cargo
 
-# def excluir():
+def excluir():
+    cod_funcionario = int(input("Digite o código do funcionário que deseja excluir os valores: "))
+    op = str(input("O que você deseja excluir? Nome (N) ou cargo (C): ")).upper().strip()
+    lista_excluir = funcionarios[cod_funcionario] # cria uma copia da lista dos funcionários principais
+    if(op=="N"):
+        lista_excluir[0] = "NULO" # altera o valor da lista cópia
+        funcionarios[cod_funcionario] = lista_excluir # cola a cópia na lista original
+    elif(op=="C"):
+        lista_excluir[1] = "NULO"
+        funcionarios[cod_funcionario] = lista_excluir
+
 def pesquisar():
-    print(funcionarios)
+    print(f"Lista completa de funcionários: {funcionarios}")
+    print(f"Lista completa de funcionários em ordem alfabética: {sorted(funcionarios)}")
+    print(f"Total de funcionários cadastrados: {total_funcionarios}")
+
 
 while True:
     print("___________________________")
@@ -49,11 +63,12 @@ while True:
     op = str(input("Digite a letra referente à opção desejada no menu superior: ")).upper().strip()
 
     if(op=="C"):
+        total_funcionarios += 1
         cadastrar()
     elif(op=="A"):
         alterar()
-    # elif(op=="E"):
-    #     excluir()
+    elif(op=="E"):
+        excluir()
     elif(op=="P"):
         pesquisar()
     elif(op=="S"):
