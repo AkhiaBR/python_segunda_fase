@@ -11,6 +11,7 @@ def cadastrar():
     funcionario_lista.append(nome)
     funcionario_lista.append(cargo)
     funcionarios[len(funcionarios)+1] = funcionario_lista
+
 def alterar():
     cod_funcionario = int(input("Qual o código do funcionário que deseja alterar?: "))
     op = str(input("O que você deseja alterar? Nome (N) ou cargo (C): ")).upper().strip()
@@ -23,7 +24,16 @@ def alterar():
         else:
             index_nome_ant = funcionarios[cod_funcionario].index(nome_ant) # pega o index do nome que o usuário deseja alterar
             funcionarios[cod_funcionario][index_nome_ant] = nome
-    if(op=="")
+    elif(op=="C"):
+        cargo_ant = str(input("Digite o cargo do funcionário que deseja alterar: "))
+        cargo = str(input("Digite o novo cargo do funcionário: "))
+        for i in funcionarios[cod_funcionario]:
+            if(i==cargo):
+                print(f"ERRO: Valor já inserido. Tente novamente...")
+        else:
+            index_cargo_ant = funcionarios[cod_funcionario].index(cargo_ant)
+            funcionarios[cod_funcionario][index_cargo_ant] = cargo
+
 # def excluir():
 def pesquisar():
     print(funcionarios)
