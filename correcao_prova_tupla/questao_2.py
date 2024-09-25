@@ -1,4 +1,4 @@
-# questão 2
+# questão 2 - Fernando Gonçalves / 2190
 
 funcionarios = {}
 total_funcionarios = 0

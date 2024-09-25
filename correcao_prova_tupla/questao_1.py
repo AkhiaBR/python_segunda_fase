@@ -1,4 +1,4 @@
-# questão 1
+# questão 1 - Fernando Gonçalves / 2190
 
 tupla_times = (
     "Botafogo", "Fortaleza", "Flamengo", "Palmeiras", "São Paulo", "Cruzeiro", "Bahia", "Athletico-PR", "Atlético-MG", "Vasco", "Bragantino",
