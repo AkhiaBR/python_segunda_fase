@@ -13,12 +13,12 @@ cursor = conexao_banco.cursor() # define que conexao_banco é um objeto manipul�
 
 # CREATE 
 
-# nome = str(input("Digite o nome do produto: "))
-# valor = float(input("Digite o valor do produto: "))
+nome = str(input("Digite o nome do produto: "))
+valor = float(input("Digite o valor do produto: "))
 
-# comando_sql = (f'INSERT INTO produtos (nome_produto,valor_produto) VALUES ("{nome}",{valor})') # define o que vai ser colocado na tabela
-# cursor.execute(comando_sql) # executa as alterações, executando a variável cursor criada anteriormente
-# conexao_banco.commit() # commita as alterações no banco
+comando_sql = (f'INSERT INTO produtos (nome_produto,valor_produto) VALUES ("{nome}",{valor})') # define o que vai ser colocado na tabela
+cursor.execute(comando_sql) # executa as alterações, executando a variável cursor criada anteriormente
+conexao_banco.commit() # commita as alterações no banco
 
 # UPDATE
 
