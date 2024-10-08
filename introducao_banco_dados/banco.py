@@ -24,18 +24,24 @@ conexao_banco.commit() # commita as alterações no banco
 
 comando_sql = ('SELECT * FROM produtos')
 cursor.execute(comando_sql)
-db = cursor.fetchall() # busca - fetch - e armazena os dados da tabela em uma variável - o fetch precisa armazenar os dados em algum lugar
-
+db_a = cursor.fetchall() # busca - fetch - e armazena os dados da tabela em uma variável - o fetch precisa armazenar os dados em algum lugar
 id_p = int(input("Digite o ID do produto que deseja alterar: "))
-nome = str(input("Digite o novo nome do produto: "))
 
-for i in db: # para cada tupla dentro de db
+for i in db_a: # para cada tupla dentro de db
     if(i[0] == id_p): # se o ID - posicao 0 da tupla for igual ao ID digitado: 
-        print("ERRO: Produto já cadastrado. Tente novamente...")
-
-comando_sql = (f'UPDATE produtos SET nome_produto = "{nome}" WHERE id_produtos = {id_p}')
-cursor.execute(comando_sql)
-conexao_banco.commit()
+        op = str(input("Deseja alterar o nome (N) ou o valor (V) do produto: ")).upper().strip()
+        if(op=="N"):
+            nome = str(input("Digite o novo nome do produto: "))
+            comando_sql = (f'UPDATE produtos SET nome_produto = "{nome}" WHERE id_produtos = {id_p}')
+            cursor.execute(comando_sql)
+            conexao_banco.commit()
+        elif(op=="V"):
+            nome = str(input("Digite o novo valor do produto: "))
+            comando_sql = (f'UPDATE produtos SET valor_produto = "{nome}" WHERE id_produtos = {id_p}')
+            cursor.execute(comando_sql)
+            conexao_banco.commit()
+        else:
+            print("ERRO: Valor digitado inválido. Tente novamente...")
 
 # DELETE 
 
