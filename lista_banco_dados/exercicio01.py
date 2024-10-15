@@ -7,27 +7,20 @@ conexao_banco = mysql.connector.connect( # especifica a conexão com o database 
     host = "127.0.0.1",
     user = "root",
     password = "",
-    database = "concessionaria"
+    database = "concessionaria2(nao_apaga_valeu)"
 )
 cursor = conexao_banco.cursor()
 
 def cadastrar():
-    comando_sql = ('SELECT * FROM carros')
-    cursor.execute(comando_sql)
-    db = cursor.fetchall()
-
     marca = str(input("Digite a marca do veículo: "))
     modelo = str(input("Digite modelo do veículo: "))
     ano = int(input("Digite o ano do veículo: "))
     cor = str(input("Digite a cor do veículo: "))
 
-    for i in db:
-        if(i[1],i[2],i[3] == marca,modelo,ano):
-            print("ERRO: Veículo já cadastrado. Tente novamente...")
-        else:
-            comando_sql = (f'INSERT INTO carros (marca,modelo,ano,cor) VALUES ("{marca}","{modelo}",{ano},"{cor}")')
-            cursor.execute(comando_sql)
-            conexao_banco.commit()
+    comando_sql = (f'INSERT INTO carros (marca,modelo,ano,cor) VALUES ("{marca}","{modelo}",{ano},"{cor}")')
+    cursor.execute(comando_sql)
+    conexao_banco.commit()
+
 
 def excluir():
     comando_sql = ('SELECT * FROM carros')
@@ -41,31 +34,29 @@ def excluir():
             comando_sql = (f'DELETE FROM carros WHERE id = {id_carro}')
             cursor.execute(comando_sql)
             conexao_banco.commit()
-        else:
-            print("ERRO: ID não existente. Tente novamente...")
 
 def pesquisar():
-    comando_sql = ('SELECT * FROM carros')
-    cursor.execute(comando_sql)
-    db = cursor.fetchall()
-
-    op = int(input("Deseja pesquisar por MARCA (1), MODELO (2) ou ANO (3)?:")).strip()
+    op = int(input("Deseja pesquisar por MARCA (1), MODELO (2) ou ANO (3)?:"))
 
     if(op==1):
         marca = str(input("Digite a marca que deseja pesquisar: "))
         comando_sql = (f'SELECT * FROM carros WHERE marca = "{marca}"')
         cursor.execute(comando_sql)
-        conexao_banco.commit()
+        result = cursor.fetchall() # retorna e salva em uma variável o que foi executado anteriormente
+        print(result)
     elif(op==2):
         modelo = str(input("Digite o modelo que deseja pesquisar: "))
         comando_sql = (f'SELECT * FROM carros WHERE modelo = "{modelo}"') 
         cursor.execute(comando_sql)
-        conexao_banco.commit()
+        result = cursor.fetchall() # retorna e salva em uma variável o que foi executado anteriormente
+        print(result)
     elif(op==3):
         ano = int(input("Digite o ano que deseja pesquisar: "))
         comando_sql = (f'SELECT * FROM carros WHERE ano = {ano}') 
         cursor.execute(comando_sql)
-        conexao_banco.commit()
+        result = cursor.fetchall() # retorna e salva em uma variável o que foi executado anteriormente
+        print(result)
+        
 while True:
     print("====================")
     print("1- Cadastrar")
